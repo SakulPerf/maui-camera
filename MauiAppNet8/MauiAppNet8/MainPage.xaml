@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
-             x:Class="MauiAppNet8.MainPage">
+             x:Class="MauiAppNet8.MainPage"
+             Title="Tap the Capture button or Auto capture checkbox below">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,10 +15,24 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <ScrollView Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <HorizontalStackLayout>
+                <FlexLayout Direction="Column" JustifyContent="Start" Wrap="Wrap" x:Name="Container" />
+            </HorizontalStackLayout>
+        </ScrollView>
         <cv:CameraView Grid.Row="0" Grid.Column="0" x:Name="cameraView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-        <Image Grid.Row="0" Grid.Column="1" BackgroundColor="Pink" x:Name="ImagePreview" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-        <Label Grid.Row="0" Grid.Column="1" Text="Tap the Capture button below!!" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Button Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0"  Text="Capture" x:Name="CaptureButton" HorizontalOptions="FillAndExpand" />
+        <Label Grid.Row="0" x:Name="Message" Grid.Column="1" Text="Tap the Capture button or Auto capture checkbox below :)" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Text="Capture" x:Name="CaptureButton" HorizontalOptions="FillAndExpand" />
+            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" >
+                <CheckBox x:Name="AutoCapture" />
+                <Label Text="Auto capture" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Grid>
     </Grid>
 
 </ContentPage>
